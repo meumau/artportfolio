@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1.5px solid black;
+    height: 150px;
+    background-color: rgb(211, 219, 206);
+}
+
+h1 {
+    font-family: "Jacquarda Bastarda 9", Courier, monospace;
+    font-weight: 100;
+    font-size: 30px;
+}
+
+h2 {
+    font-family: "Jacquarda Bastarda 9", Courier, monospace;
+    font-weight: 100;
+}
+
+p {
+    font-family: "Noto Sans", Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.aboutimg {
+    width: 400px;
+}
+
+.about {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 150px;
+    gap: 40px;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 240, 234);
+    min-height: 300px;
+    border-bottom: 1.5px solid black;
+    text-wrap: balance;
+}
+
+.works {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(220, 223, 215);
+    gap: 30px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    border-bottom: 1.5px solid black;
+}
+
+.img-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 40px;     
+    justify-content: center;
+}
+
+.img-container img {
+    width: 350px;
+    max-width: 100%;
+    border: 1.5px solid black;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.img-container img:hover,
+.img-container img:focus-visible {
+    transform: scale(1.03);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.image-modal[hidden] {
+    display: none;
+}
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-image {
+    display: block;
+    max-width: min(90vw, 1000px);
+    max-height: 85vh;
+    border: 2px solid white;
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    width: 44px;
+    height: 44px;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    background: transparent;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus-visible {
+    color: black;
+    background-color: white;
+    outline: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1.5px solid black;
+    height: 150px;
+    background-color: rgb(211, 219, 206);
+}
+
+@media (max-width: 768px) {
+    .about,
+    .img-container {
+        flex-direction: column;
+    }
+
+    .about {
+        padding: 40px 25px;
+        height: auto;
+        text-align: center;
+    }
+
+    .aboutimg,
+    .img-container img {
+        width: 100%;
+        max-width: 350px;
+    }
+}

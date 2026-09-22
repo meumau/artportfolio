@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <meta name="description" content="Harrastelijataiteilijan taideportfolio">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <section>
+            <h1>Mia Emilia taideportfolio</h1>
+        </section>
+    </header>
+
+    <main>
+        <section class="about">
+            <div>
+                <img class="aboutimg" src="./images/headerkuva.png" alt="Piirros">
+            </div>
+            <div>
+            <h2>Minusta</h2>
+            <p>Olen itseoppinut taiteilija, joka tykkää leikitellä erilaisilla tyyleillä ja tunnelmilla.
+                Vuosien varrella olen siirtynyt realistisemmasta tyylistä kohti sarjakuvamaisempia kuvituksia.
+                Pidän uuden kokeilemisesta ja IT-alan opiskelijana haaveissani onkin tulevaisuudessa yhdistää
+                visuaalista taidetta teknologiaan luovin tavoin.</p>
+                </div>
+        </section>
+        <section class="works">
+            <h2>Töitäni</h2>
+            <div class="img-container">
+                <img src="./images/kuva1.jpg" alt="Piirros, jossa hahmo istuu talon sisällä" tabindex="0">
+                <img src="./images/kuva2.jpg" alt="Kuva, jossa näkyy 3 eri taideteosta" tabindex="0">
+                <img src="./images/kuva3.jpg" alt="Piirros sarjakuvamaisesta koirahahmosta" tabindex="0">
+                <img src="./images/kuva4.jpg" alt="Violettisävyinen piirros, aiheena yöperhonen" tabindex="0">
+                <img src="./images/kuva5.jpg" alt="Piirros, jossa tyttö istuu hämärässä huoneessa" tabindex="0">
+                <img src="./images/kuva6.jpg" alt="Piirros, jossa kollaasinomaisesti monta pientä piirrosta" tabindex="0">
+            </div>
+        </section>
+    </main>
+
+    <div class="image-modal" role="dialog" aria-modal="true" aria-label="Suurennettu kuva" hidden>
+        <button class="close-modal" type="button" aria-label="Sulje kuva">&times;</button>
+        <img class="modal-image" src="" alt="">
+    </div>
+
+    <footer>
+
+        <p>© 2026</p>
+
+    </footer>
+
+    <script>
+        const galleryImages = document.querySelectorAll('.img-container img');
+        const imageModal = document.querySelector('.image-modal');
+        const modalImage = document.querySelector('.modal-image');
+        const closeModalButton = document.querySelector('.close-modal');
+
+        function openModal(image) {
+            modalImage.src = image.src;
+            modalImage.alt = image.alt;
+            imageModal.hidden = false;
+            document.body.classList.add('modal-open');
+            closeModalButton.focus();
+        }
+
+        function closeModal() {
+            imageModal.hidden = true;
+            modalImage.src = '';
+            document.body.classList.remove('modal-open');
+        }
+
+        galleryImages.forEach((image) => {
+            image.addEventListener('click', () => openModal(image));
+            image.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openModal(image);
+                }
+            });
+        });
+
+        closeModalButton.addEventListener('click', closeModal);
+        imageModal.addEventListener('click', (event) => {
+            if (event.target === imageModal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !imageModal.hidden) {
+                closeModal();
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
